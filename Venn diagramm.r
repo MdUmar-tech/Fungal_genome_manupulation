@@ -30,6 +30,7 @@ nrow(na.omit(Cazy1[,c(3,4)]))
 #Area23=302
 nrow(na.omit(Cazy1[,c(2,4)]))
 #Area13=333
+grid.newpage() 
 draw.triple.venn(area1=384, area2=336, area3=718, 
                  n12=289, n23=302, n13=333, n123=281, 
                  category=c("HMMER","eCAMI","DIAMOND"),

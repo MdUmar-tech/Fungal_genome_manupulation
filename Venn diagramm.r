@@ -31,10 +31,23 @@ nrow(na.omit(Cazy1[,c(3,4)]))
 nrow(na.omit(Cazy1[,c(2,4)]))
 #Area13=333
 grid.newpage() 
-draw.triple.venn(area1=384, area2=336, area3=718, 
-                 n12=289, n23=302, n13=333, n123=281, 
-                 category=c("HMMER","eCAMI","DIAMOND"),
-                 col="Red",fill=c("Green","Yellow","Blue"),
-                 cex = 2,cat.cex = 1.5)
+pv<-draw.triple.venn(area1=384, 
+                     area2=336,
+                     area3=718,
+                     n12=289, 
+                     n23=302, 
+                     n13=333, n123=281, 
+                     category=c("HMMER","eCAMI","DIAMOND"),
+                     #col="Red",
+                     fill = c("light pink", "ligh tblue", "wheat"),
+                     cex = 2,
+                     cat.cex = 1.5,
+                     cat.fontface = "bold",
+                     res=1000,
+                     lwd = 1)
+grid.newpage()
+grid.arrange(pv, bottom=textGrob("Figure 2", gp=gpar(fontsize=15,font=8))) 
+ggsave("ggplot3save.png", plot=pv, width=20, height= 16, units = c("cm"), dpi =300)
+dev.off()
                  
                  

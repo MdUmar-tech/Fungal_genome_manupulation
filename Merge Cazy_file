@@ -1,0 +1,15 @@
+#merge or fill empty value in column DIAMOND either from eCAMI or HAMMER using R and dplyer
+Cazy_ven <- read.csv("~/Desktop/ZZZZZZZZZZZZ_GBK_FUNGUS/ARTEMIS/Velvet_95_Assembly_cazyme_gff/Cazy_ven.csv")
+View(Cazy_ven)
+Cazy_ven1<-Cazy_ven[,-c(1,2,6,7)]
+library(dplyr)
+Cazy_ven %>% 
+  mutate_if(is.factor, as.character) %>% 
+  mutate(DIAMOND = case_when(DIAMOND == ""  ~ HMMER,
+                             DIAMOND == ""  ~ eCAMI,
+                             TRUE ~ DIAMOND))
+#####
+#in case when considering two column value such as if diamond and ecami are same than only fill than use command like 
+Cazy_ven %>% 
+  mutate_if(is.factor, as.character) %>% 
+  mutate(DIAMOND = case_when(case_when(DIAMOND == ""& DIAMOND == eCAMI  ~ HMMER))

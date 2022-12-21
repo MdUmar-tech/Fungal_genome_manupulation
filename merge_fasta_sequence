@@ -1,0 +1,46 @@
+# using biopython
+from Bio.Seq import Seq
+seq_file = SeqIO.parse("practice.fna", 'fasta')
+concatenated_seq = Seq("")
+for record in seq_file:
+    concatenated_seq += record.seq  
+    #print(record.seq )  
+print(concatenated_seq)
+
+####################
+#using biopython but making list
+seq_list = open("practice.fna")  
+list_of_seqs=[]
+names = []#initialize lists
+spacer = Seq("")
+concatenated_seq = Seq("")
+for record in SeqIO.parse(seq_list, 'fasta'):
+    n=record.seq
+    list_of_seqs.append(record.seq)   
+    concatenated_seq=spacer.join(list_of_seqs)#without space also it works taken from biopython tutorial and cookbook topic 3.4 Concatenating or adding sequences
+
+print(concatenated_seq)
+
+
+###############
+#using python only
+dna = []
+header = []
+spacer = Seq("")
+infile = open("practice.fna","r")
+
+for line in infile:
+    if line.startswith(">"):
+        header.append(line.strip())
+        dna.append('')
+    else:
+        dna[-1] += line.strip("\n")
+    
+print(dna)
+cont_dna = spacer.join(dna)
+print(header[1],"/n",cont_dna)
+print(header)
+for length_of_sequences in dna:
+      print(len(length_of_sequences), sep = " ")
+infile.close()
+

@@ -1,7 +1,7 @@
 #merge or fill empty value in column DIAMOND either from eCAMI or HAMMER using R and dplyer
 Cazy_ven <- read.csv("~/Desktop/ZZZZZZZZZZZZ_GBK_FUNGUS/ARTEMIS/Velvet_95_Assembly_cazyme_gff/Cazy_ven.csv")
 View(Cazy_ven)
-Cazy_ven1<-Cazy_ven[,-c(1,2,6,7)]
+Cazy_ven1<-Cazy_ven[,-c(2,6,7)]# retain gene id
 library(dplyr)
 Cazy_ven %>% 
   mutate_if(is.factor, as.character) %>% 

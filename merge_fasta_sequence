@@ -44,3 +44,20 @@ for length_of_sequences in dna:
       print(len(length_of_sequences), sep = " ")
 infile.close()
 
+
+###################################
+file = open('practice.fna','r+')
+newfile1=open('ty1.txt','w')
+for line in file.readlines():
+    if not (line.startswith('>')):
+        newfile1.write(line.strip())
+newfile1.close()
+
+##################################
+with open('practice.fna','r+') as file:
+        newfile= open('ty1.txt','w')
+        for line in file.readlines():
+            if not (line.startswith('>')):
+                newfile.write(line.strip())
+        newfile.close()
+
